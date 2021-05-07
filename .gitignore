@@ -1,0 +1,4 @@
+movie_api/db.sqlite3
+movie_api/core/__pycache__/
+movie_api/movie_api/__pycache__/
+movie_api/movie_client/__pycache__/
