@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const api = axios.create({
+const apiClient = axios.create({
     baseURL:"http://localhost:8000"
 });
 
-export function getTopMovies(setPlanData) {
-    let res = api.get('/getTopMovies/');
-    console.log(res);
-    return res;
+export function getTopMovies() {
+    let promise = apiClient.get('/getTopMovies/');
+    const dataPromise = promise.then((response) => response.data);
+    return dataPromise;
 }
