@@ -14,7 +14,6 @@ Uses Grid as presentation component
 export const MovieGrid = () => {
     const [movies, setMovies] = useState([]);
 
-    console.log("movies", movies);
     useEffect(()=> {
         // console.log(getTopMovies());
         let movieData = [];
