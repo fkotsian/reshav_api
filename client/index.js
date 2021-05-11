@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
-import { TextField } from '@material-ui/core';
 import 'semantic-ui-css/semantic.min.css';
 import { Button, Icon, Input } from 'semantic-ui-react';
 
@@ -26,11 +25,17 @@ function App() {
     movieGridRef.current.searchMoviesHook(searchQuery);
   }
 
+  function keyPress (e) {
+    if (e.key === 'Enter') {
+      searchMovies();
+    }
+  }
+
   return (
     <div style={{"marginLeft":"30px", "marginTop":"20px"}}>
       <h2 style={{"marginLeft":"-8px"}}><b>Movie App</b></h2>
         <div style={{"display":"flex", "marginTop":"25px"}}>
-          <Input placeholder='Search...' action={{ color: "teal", content: "Search", onClick: searchMovies}} variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
+          <Input onKeyDown={keyPress} placeholder='Search...' action={{ color: "teal", content: "Search", onClick: searchMovies}} variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
           {/* <button 
             class="ui button"
             onClick={searchMovies}
