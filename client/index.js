@@ -5,6 +5,8 @@ import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
 import { Button, TextField } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
+import 'semantic-ui-css/semantic.min.css';
+
 // check for existing cards
 
 function App() {
@@ -33,6 +35,9 @@ function App() {
             <ArrowForwardIosIcon /> 
           </Button>
           <Button  onClick={searchTopMovies} style={{"backgroundColor":"cyan", "margin-left": "50px", "height":"55px"}}> Get Top Movies </Button>
+          <button class="ui primary button">
+            Save
+          </button>
         </div>
         <br />
         <br />
