@@ -4,9 +4,8 @@ import './index.css';
 import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
 import { TextField } from '@material-ui/core';
-import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import 'semantic-ui-css/semantic.min.css';
-import { Button } from 'semantic-ui-react'
+import { Button, Icon, Input } from 'semantic-ui-react';
 
 
 // check for existing cards
@@ -28,22 +27,22 @@ function App() {
   }
 
   return (
-    <div style={{"marginLeft":"20px", "marginTop":"10px"}}>
-      <h2><b>Movie App</b></h2>
-        <div style={{"display":"flex"}}>
-          <TextField id="outlined-basic" label="Search Movies" variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
-          <Button
-            class="ui primary button"
-            icon='angle right icon'
+    <div style={{"marginLeft":"30px", "marginTop":"20px"}}>
+      <h2 style={{"marginLeft":"-8px"}}><b>Movie App</b></h2>
+        <div style={{"display":"flex", "marginTop":"25px"}}>
+          <Input placeholder='Search...' action={{ color: "teal", content: "Search", onClick: searchMovies}} variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
+          {/* <button 
+            class="ui button"
             onClick={searchMovies}
-            style={{"backgroundColor":"purple", color:"white", "margin-left": "10px", "height":"55px", width:"55px"}}
-          />
-          <button class="ui primary button" style={{"backgroundColor":"cyan", "color":"Grey", "margin-left": "50px", "height":"55px"}} 
+            style={{"backgroundColor":"purple", color:"white", "marginLeft": "10px", "height":"55px", width:"55px", textAlign:"center"}}
+            >
+              <Icon size="big" name="angle right icon" style={{marginLeft:"-8.5px"}}/>
+            </button> */}
+          <button class="ui primary button" style={{"backgroundColor":"cyan", "color":"Grey", "marginLeft": "50px", "height":"55px"}} 
             onClick={searchTopMovies}>
             Get Top Movies
           </button>
         </div>
-        <br />
         <br />
         <MovieGrid ref={movieGridRef} />
     </div>
