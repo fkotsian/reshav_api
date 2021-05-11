@@ -3,9 +3,11 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
-import { Button, TextField } from '@material-ui/core';
+import { TextField } from '@material-ui/core';
 import ArrowForwardIosIcon from '@material-ui/icons/ArrowForwardIos';
 import 'semantic-ui-css/semantic.min.css';
+import { Button } from 'semantic-ui-react'
+
 
 // check for existing cards
 
@@ -26,17 +28,19 @@ function App() {
   }
 
   return (
-    <div>
+    <div style={{"marginLeft":"20px", "marginTop":"10px"}}>
       <h2><b>Movie App</b></h2>
-        <div>
+        <div style={{"display":"flex"}}>
           <TextField id="outlined-basic" label="Search Movies" variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
-          <Button onClick={searchMovies}
-                  style={{"backgroundColor":"purple", "margin-left": "10px", "height":"55px"}}> 
-            <ArrowForwardIosIcon /> 
-          </Button>
-          <Button  onClick={searchTopMovies} style={{"backgroundColor":"cyan", "margin-left": "50px", "height":"55px"}}> Get Top Movies </Button>
-          <button class="ui primary button">
-            Save
+          <Button
+            class="ui primary button"
+            icon='angle right icon'
+            onClick={searchMovies}
+            style={{"backgroundColor":"purple", color:"white", "margin-left": "10px", "height":"55px", width:"55px"}}
+          />
+          <button class="ui primary button" style={{"backgroundColor":"cyan", "color":"Grey", "margin-left": "50px", "height":"55px"}} 
+            onClick={searchTopMovies}>
+            Get Top Movies
           </button>
         </div>
         <br />

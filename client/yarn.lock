@@ -978,6 +978,11 @@
     "@babel/runtime" "^7.10.4"
     react-is "^16.6.3"
 
+"@fortawesome/fontawesome-free@^5.15.3":
+  version "5.15.3"
+  resolved "https://registry.yarnpkg.com/@fortawesome/fontawesome-free/-/fontawesome-free-5.15.3.tgz#c36ffa64a2a239bf948541a97b6ae8d729e09a9a"
+  integrity sha512-rFnSUN/QOtnOAgqFRooTA3H57JLDm0QEG/jPdk+tLQNL/eWd+Aok8g3qCI+Q1xuDPWpGW/i9JySpJVsq8Q0s9w==
+
 "@material-ui/core@^4.11.3":
   version "4.11.4"
   resolved "https://registry.npmjs.org/@material-ui/core/-/core-4.11.4.tgz"
@@ -5769,6 +5774,11 @@ semantic-ui-css@^2.4.1:
   integrity sha512-Pkp0p9oWOxlH0kODx7qFpIRYpK1T4WJOO4lNnpNPOoWKCrYsfHqYSKgk5fHfQtnWnsAKy7nLJMW02bgDWWFZFg==
   dependencies:
     jquery x.*
+
+semantic-ui-icon@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/semantic-ui-icon/-/semantic-ui-icon-2.3.3.tgz#b0beb7e4b541a13eb49a8039626723ab5393b95c"
+  integrity sha512-TuO265ICYGoNPs0rjanqDlrx8hfcpl4MMv92OUwFCbDwee4nGj8+Dv+i1RvkPPr0gO565G/0EKs8vF4wwhMMBw==
 
 semantic-ui-react@^2.0.3:
   version "2.0.3"
