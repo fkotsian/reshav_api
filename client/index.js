@@ -15,6 +15,7 @@ function App() {
   const [movies, setMovies] = useState([]);
 
   useEffect(() => {
+    localStorage.clear();
     getTopMovies();
   }, []);
 
@@ -23,6 +24,7 @@ function App() {
     getTopMoviesApi().then(data => {
         data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
         setMovies(movieData);
+        localStorage.setItem('topMovies', movieData);
     })
     .catch(err => console.log(err));
   }
@@ -32,6 +34,7 @@ function App() {
     searchMoviesApi(searchQuery).then(data => {
         data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
         setMovies(movieData);
+        localStorage.setItem(searchQuery, movieData);
     }).catch(err => console.log(err));
   } 
 
