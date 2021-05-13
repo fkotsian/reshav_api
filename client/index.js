@@ -4,7 +4,7 @@ import './index.css';
 import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
 import 'semantic-ui-css/semantic.min.css';
-import { Button, Icon, Input } from 'semantic-ui-react';
+import { Input, Grid } from 'semantic-ui-react';
 import { getTopMoviesApi, searchMoviesApi } from '/api/MovieApi';
 
 
@@ -52,7 +52,11 @@ function App() {
           </button>
         </div>
         <br />
+        <br />
         {/* <MovieGrid ref={movieGridRef} /> */}
+        <Grid style={{width:"1200px"}}>
+          <Grid.Row>{["Movie", "Overview", "Release Date", "Language"].map(field => <Grid.Column width={4}><b>{field}</b></Grid.Column>)}</Grid.Row>
+        </Grid>
         <MovieGrid rowData={movies} fields={["Movie", "Overview", "Release Date", "Language"]}/>
     </div>
   );

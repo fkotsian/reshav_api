@@ -11,7 +11,7 @@ export const MovieGrid = props => {
     return (
             <Grid style={{height:"700px", width:"1200px", overflow: "scroll"}}>
                 <div class="ui celled grid">
-                <Grid.Row>{props.fields.map(field => <Grid.Column width={4}><b>{field}</b></Grid.Column>)}</Grid.Row>
+                {/* <Grid.Row>{props.fields.map(field => <Grid.Column width={4}><b>{field}</b></Grid.Column>)}</Grid.Row> */}
                 {
                     // ["Movie", "Overview", "Release Date", "Language"]
                     props.rowData.map(row => 
