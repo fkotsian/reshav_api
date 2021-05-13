@@ -7,6 +7,8 @@ An SPA (single-page app) in React that requests information from the API, and:</
 <li>Renders a list or grid of movies</li>
 <li>Allows searching (new API request) and filtering for movies</li>
 <li>Allows clicking on a Movie to see a more detailed view</li>
+<li>https://semantic-ui.com/elements/icon.html</li>
+<li>https://react.semantic-ui.com/usage/</li>
 
 <p>
 Some additional extensions that are germane to what we do here at Narmi:

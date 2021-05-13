@@ -6,6 +6,7 @@ import 'ag-grid-community/dist/styles/ag-theme-alpine.css';
 /*
 Presentation Component For Grid data
 Pass row columns and data
+Implementated with Ag grid
 */
 
 
