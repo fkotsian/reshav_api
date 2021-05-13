@@ -1,29 +1,39 @@
-import React, { useState, createRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import '@babel/polyfill'
 import { MovieGrid } from './components/MovieGrid';
 import 'semantic-ui-css/semantic.min.css';
 import { Button, Icon, Input } from 'semantic-ui-react';
+import { getTopMoviesApi, searchMoviesApi } from '/api/MovieApi';
 
 
 // check for existing cards
 
 function App() {
-  const movieGridRef = createRef();
   const [searchQuery, setSearchQuery] = useState('');
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-  }, [movieGridRef]);
+    getTopMovies();
+  }, []);
 
-
-  function searchTopMovies() {
-    movieGridRef.current.searchTopMovies();
+  function getTopMovies(){
+    let movieData = [];
+    getTopMoviesApi().then(data => {
+        data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
+        setMovies(movieData);
+    })
+    .catch(err => console.log(err));
   }
 
-  function searchMovies() {
-    movieGridRef.current.searchMoviesHook(searchQuery);
-  }
+  function searchMovies(){
+    let movieData = [];
+    searchMoviesApi(searchQuery).then(data => {
+        data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
+        setMovies(movieData);
+    }).catch(err => console.log(err));
+  } 
 
   function keyPress (e) {
     if (e.key === 'Enter') {
@@ -36,20 +46,14 @@ function App() {
       <h2 style={{"marginLeft":"-8px"}}><b>Movie App</b></h2>
         <div style={{"display":"flex", "marginTop":"25px"}}>
           <Input onKeyDown={keyPress} placeholder='Search...' action={{ color: "teal", content: "Search", onClick: searchMovies}} variant="outlined" onChange={(e)=>{setSearchQuery(e.target.value)}}/>
-          {/* <button 
-            class="ui button"
-            onClick={searchMovies}
-            style={{"backgroundColor":"purple", color:"white", "marginLeft": "10px", "height":"55px", width:"55px", textAlign:"center"}}
-            >
-              <Icon size="big" name="angle right icon" style={{marginLeft:"-8.5px"}}/>
-            </button> */}
           <button class="ui primary button" style={{"backgroundColor":"cyan", "color":"Grey", "marginLeft": "50px", "height":"55px"}} 
-            onClick={searchTopMovies}>
+            onClick={getTopMovies}>
             Get Top Movies
           </button>
         </div>
         <br />
-        <MovieGrid ref={movieGridRef} />
+        {/* <MovieGrid ref={movieGridRef} /> */}
+        <MovieGrid rowData={movies} fields={["Movie", "Overview", "Release Date", "Language"]}/>
     </div>
   );
 }
