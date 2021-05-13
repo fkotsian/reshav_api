@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid, Segment } from 'semantic-ui-react'
 
 /*
@@ -8,6 +8,10 @@ Grid Presntational component implemented with Semantic UI
 
 
 export const MovieGrid = props => {
+    useEffect(() => {
+        console.log("sort", props.sort);
+      }, [props.sort]);
+
     return (
             <Grid style={{height:"700px", width:"1200px", overflow: "scroll"}}>
                 <div class="ui celled grid">
