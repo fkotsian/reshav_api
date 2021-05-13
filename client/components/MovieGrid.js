@@ -1,6 +1,5 @@
 import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
 import { getTopMovies, searchMovies } from '../api/MovieApi';
-import { Grid } from './Grid';
 import { SemanticGrid } from './SemanticGrid';
 
 
