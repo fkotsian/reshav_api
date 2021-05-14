@@ -1,61 +1,39 @@
-import React, { useState, useEffect, forwardRef, useImperativeHandle } from 'react';
-import { getTopMovies, searchMovies } from '../api/MovieApi';
-import { SemanticGrid } from './SemanticGrid';
-
+import React, { useEffect } from 'react';
+import { Grid, Segment } from 'semantic-ui-react'
 
 /*
-Container Component For Grid data
-Uses Grid as presentation component
+Grid Presntational component implemented with Semantic UI
 */
 
 
-export const MovieGrid = forwardRef((props, ref) => {
-        const [movies, setMovies] = useState([]);
 
-    function getTopMoviesApi(){
-        let movieData = [];
-        getTopMovies().then(data => {
-            data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
-            setMovies(movieData);
-        })
-        .catch(err => console.log(err));
-    }
+export const MovieGrid = props => {
+    useEffect(() => {
+        console.log("sort", props.sort);
+      }, [props.sort]);
 
-    function searchMoviesApi(searchQuery){
-        let movieData = [];
-        searchMovies(searchQuery).then(data => {
-            data.results.forEach((x, i) => movieData.push({"Movie": x.title, "Overview": x.overview, "Release Date": x.release_date, "Language": x.original_language}));
-            setMovies(movieData);
-        }).catch(err => console.log(err));
-        console.log(movieData);
-    }
-
-
-
-    useEffect(()=> {
-        // console.log(getTopMovies());
-        getTopMoviesApi();
-        
-    },[]);
-
-    useImperativeHandle(ref, () => ({
-
-        searchMoviesHook(searchQuery) {
-            console.log("Search Movies");
-            searchMoviesApi(searchQuery);
-        },
-        searchTopMovies() {
-            console.log("Search Top Movies");
-            getTopMoviesApi();
-          }
-    
-      }));
-
-   return (
-       <div>
-            <p></p> 
-            {/* <Grid rowData={movies} fields={["Movie", "Overview", "Release Date", "Language"]}/> */}
-            <SemanticGrid rowData={movies} fields={["Movie", "Overview", "Release Date", "Language"]}/>
-       </div>
-   );
-});
+    return (
+            <Grid style={{height:"700px", width:"1200px", overflow: "scroll"}}>
+                <div class="ui celled grid">
+                {/* <Grid.Row>{props.fields.map(field => <Grid.Column width={4}><b>{field}</b></Grid.Column>)}</Grid.Row> */}
+                {
+                    // ["Movie", "Overview", "Release Date", "Language"]
+                    props.rowData.map(row => 
+                                            <Grid.Row>
+                                                {/* <Segment> */}
+                                                    {props.fields.map(
+                                                        field =>
+                                                        <Grid.Column width={4}>
+                                                                {/* <Segment> */}
+                                                                {row[field]}
+                                                                {/* </Segment> */}
+                                                        </Grid.Column>
+                                                    )}
+                                                {/* </Segment> */}
+                                             </Grid.Row>
+                                      )
+                }
+                </div>
+            </Grid>
+    );
+}
